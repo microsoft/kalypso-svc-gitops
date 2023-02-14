@@ -9,9 +9,9 @@ metadata:
     app.kubernetes.io/component: metrics
     app.kubernetes.io/part-of: kube-state-metrics
     app.kubernetes.io/name: kube-state-metrics
-    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/instance: prometheus
     app.kubernetes.io/version: "2.5.0"
-  name: release-name-kube-state-metrics
+  name: prometheus-kube-state-metrics
 imagePullSecrets:
   []
 ---
@@ -22,10 +22,10 @@ metadata:
   labels:
     component: "alertmanager"
     app: prometheus
-    release: release-name
+    release: prometheus
     chart: prometheus-15.13.0
     heritage: Helm
-  name: release-name-prometheus-alertmanager
+  name: prometheus-alertmanager
   annotations:
     {}
 ---
@@ -36,10 +36,10 @@ metadata:
   labels:
     component: "node-exporter"
     app: prometheus
-    release: release-name
+    release: prometheus
     chart: prometheus-15.13.0
     heritage: Helm
-  name: release-name-prometheus-node-exporter
+  name: prometheus-node-exporter
   annotations:
     {}
 ---
@@ -50,10 +50,10 @@ metadata:
   labels:
     component: "pushgateway"
     app: prometheus
-    release: release-name
+    release: prometheus
     chart: prometheus-15.13.0
     heritage: Helm
-  name: release-name-prometheus-pushgateway
+  name: prometheus-pushgateway
   annotations:
     {}
 ---
@@ -64,10 +64,10 @@ metadata:
   labels:
     component: "server"
     app: prometheus
-    release: release-name
+    release: prometheus
     chart: prometheus-15.13.0
     heritage: Helm
-  name: release-name-prometheus-server
+  name: prometheus-server
   annotations:
     {}
 ---
@@ -78,10 +78,10 @@ metadata:
   labels:
     component: "alertmanager"
     app: prometheus
-    release: release-name
+    release: prometheus
     chart: prometheus-15.13.0
     heritage: Helm
-  name: release-name-prometheus-alertmanager
+  name: prometheus-alertmanager
 data:
   allow-snippet-annotations: "false"
   alertmanager.yml: |
@@ -101,10 +101,10 @@ metadata:
   labels:
     component: "server"
     app: prometheus
-    release: release-name
+    release: prometheus
     chart: prometheus-15.13.0
     heritage: Helm
-  name: release-name-prometheus-server
+  name: prometheus-server
 data:
   allow-snippet-annotations: "false"
   alerting_rules.yml: |
@@ -434,10 +434,10 @@ metadata:
   labels:
     component: "alertmanager"
     app: prometheus
-    release: release-name
+    release: prometheus
     chart: prometheus-15.13.0
     heritage: Helm
-  name: release-name-prometheus-alertmanager
+  name: prometheus-alertmanager
 spec:
   accessModes:
     - ReadWriteOnce
@@ -452,10 +452,10 @@ metadata:
   labels:
     component: "server"
     app: prometheus
-    release: release-name
+    release: prometheus
     chart: prometheus-15.13.0
     heritage: Helm
-  name: release-name-prometheus-server
+  name: prometheus-server
 spec:
   accessModes:
     - ReadWriteOnce
@@ -473,9 +473,9 @@ metadata:
     app.kubernetes.io/component: metrics
     app.kubernetes.io/part-of: kube-state-metrics
     app.kubernetes.io/name: kube-state-metrics
-    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/instance: prometheus
     app.kubernetes.io/version: "2.5.0"
-  name: release-name-kube-state-metrics
+  name: prometheus-kube-state-metrics
 rules:
 
 - apiGroups: ["certificates.k8s.io"]
@@ -620,10 +620,10 @@ metadata:
   labels:
     component: "alertmanager"
     app: prometheus
-    release: release-name
+    release: prometheus
     chart: prometheus-15.13.0
     heritage: Helm
-  name: release-name-prometheus-alertmanager
+  name: prometheus-alertmanager
 rules:
   []
 ---
@@ -634,10 +634,10 @@ metadata:
   labels:
     component: "pushgateway"
     app: prometheus
-    release: release-name
+    release: prometheus
     chart: prometheus-15.13.0
     heritage: Helm
-  name: release-name-prometheus-pushgateway
+  name: prometheus-pushgateway
 rules:
   []
 ---
@@ -648,10 +648,10 @@ metadata:
   labels:
     component: "server"
     app: prometheus
-    release: release-name
+    release: prometheus
     chart: prometheus-15.13.0
     heritage: Helm
-  name: release-name-prometheus-server
+  name: prometheus-server
 rules:
   - apiGroups:
       - ""
@@ -693,16 +693,16 @@ metadata:
     app.kubernetes.io/component: metrics
     app.kubernetes.io/part-of: kube-state-metrics
     app.kubernetes.io/name: kube-state-metrics
-    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/instance: prometheus
     app.kubernetes.io/version: "2.5.0"
-  name: release-name-kube-state-metrics
+  name: prometheus-kube-state-metrics
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: release-name-kube-state-metrics
+  name: prometheus-kube-state-metrics
 subjects:
 - kind: ServiceAccount
-  name: release-name-kube-state-metrics
+  name: prometheus-kube-state-metrics
 ---
 # Source: prometheus/templates/alertmanager/clusterrolebinding.yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -711,17 +711,17 @@ metadata:
   labels:
     component: "alertmanager"
     app: prometheus
-    release: release-name
+    release: prometheus
     chart: prometheus-15.13.0
     heritage: Helm
-  name: release-name-prometheus-alertmanager
+  name: prometheus-alertmanager
 subjects:
   - kind: ServiceAccount
-    name: release-name-prometheus-alertmanager
+    name: prometheus-alertmanager
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: release-name-prometheus-alertmanager
+  name: prometheus-alertmanager
 ---
 # Source: prometheus/templates/pushgateway/clusterrolebinding.yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -730,17 +730,17 @@ metadata:
   labels:
     component: "pushgateway"
     app: prometheus
-    release: release-name
+    release: prometheus
     chart: prometheus-15.13.0
     heritage: Helm
-  name: release-name-prometheus-pushgateway
+  name: prometheus-pushgateway
 subjects:
   - kind: ServiceAccount
-    name: release-name-prometheus-pushgateway
+    name: prometheus-pushgateway
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: release-name-prometheus-pushgateway
+  name: prometheus-pushgateway
 ---
 # Source: prometheus/templates/server/clusterrolebinding.yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -749,30 +749,30 @@ metadata:
   labels:
     component: "server"
     app: prometheus
-    release: release-name
+    release: prometheus
     chart: prometheus-15.13.0
     heritage: Helm
-  name: release-name-prometheus-server
+  name: prometheus-server
 subjects:
   - kind: ServiceAccount
-    name: release-name-prometheus-server
+    name: prometheus-server
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: release-name-prometheus-server
+  name: prometheus-server
 ---
 # Source: prometheus/charts/kube-state-metrics/templates/service.yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: release-name-kube-state-metrics
+  name: prometheus-kube-state-metrics
   labels:    
     helm.sh/chart: kube-state-metrics-4.13.0
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: metrics
     app.kubernetes.io/part-of: kube-state-metrics
     app.kubernetes.io/name: kube-state-metrics
-    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/instance: prometheus
     app.kubernetes.io/version: "2.5.0"
   annotations:
     prometheus.io/scrape: 'true'
@@ -786,7 +786,7 @@ spec:
   
   selector:    
     app.kubernetes.io/name: kube-state-metrics
-    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/instance: prometheus
 ---
 # Source: prometheus/templates/alertmanager/service.yaml
 apiVersion: v1
@@ -795,10 +795,10 @@ metadata:
   labels:
     component: "alertmanager"
     app: prometheus
-    release: release-name
+    release: prometheus
     chart: prometheus-15.13.0
     heritage: Helm
-  name: release-name-prometheus-alertmanager
+  name: prometheus-alertmanager
 spec:
   ports:
     - name: http
@@ -808,7 +808,7 @@ spec:
   selector:
     component: "alertmanager"
     app: prometheus
-    release: release-name
+    release: prometheus
   sessionAffinity: None
   type: "ClusterIP"
 ---
@@ -821,10 +821,10 @@ metadata:
   labels:
     component: "node-exporter"
     app: prometheus
-    release: release-name
+    release: prometheus
     chart: prometheus-15.13.0
     heritage: Helm
-  name: release-name-prometheus-node-exporter
+  name: prometheus-node-exporter
 spec:
   ports:
     - name: metrics
@@ -834,7 +834,7 @@ spec:
   selector:
     component: "node-exporter"
     app: prometheus
-    release: release-name
+    release: prometheus
   type: "ClusterIP"
 ---
 # Source: prometheus/templates/pushgateway/service.yaml
@@ -846,10 +846,10 @@ metadata:
   labels:
     component: "pushgateway"
     app: prometheus
-    release: release-name
+    release: prometheus
     chart: prometheus-15.13.0
     heritage: Helm
-  name: release-name-prometheus-pushgateway
+  name: prometheus-pushgateway
 spec:
   ports:
     - name: http
@@ -859,7 +859,7 @@ spec:
   selector:
     component: "pushgateway"
     app: prometheus
-    release: release-name
+    release: prometheus
   type: "ClusterIP"
 ---
 # Source: prometheus/templates/server/service.yaml
@@ -869,10 +869,10 @@ metadata:
   labels:
     component: "server"
     app: prometheus
-    release: release-name
+    release: prometheus
     chart: prometheus-15.13.0
     heritage: Helm
-  name: release-name-prometheus-server
+  name: prometheus-server
 spec:
   ports:
     - name: http
@@ -882,7 +882,7 @@ spec:
   selector:
     component: "server"
     app: prometheus
-    release: release-name
+    release: prometheus
   sessionAffinity: None
   type: "ClusterIP"
 ---
@@ -893,16 +893,16 @@ metadata:
   labels:
     component: "node-exporter"
     app: prometheus
-    release: release-name
+    release: prometheus
     chart: prometheus-15.13.0
     heritage: Helm
-  name: release-name-prometheus-node-exporter
+  name: prometheus-node-exporter
 spec:
   selector:
     matchLabels:
       component: "node-exporter"
       app: prometheus
-      release: release-name
+      release: prometheus
   updateStrategy:
     type: RollingUpdate
   template:
@@ -910,11 +910,11 @@ spec:
       labels:
         component: "node-exporter"
         app: prometheus
-        release: release-name
+        release: prometheus
         chart: prometheus-15.13.0
         heritage: Helm
     spec:
-      serviceAccountName: release-name-prometheus-node-exporter
+      serviceAccountName: prometheus-node-exporter
       containers:
         - name: prometheus-node-exporter
           image: "quay.io/prometheus/node-exporter:v1.3.1"
@@ -965,20 +965,20 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: release-name-kube-state-metrics
+  name: prometheus-kube-state-metrics
   labels:    
     helm.sh/chart: kube-state-metrics-4.13.0
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: metrics
     app.kubernetes.io/part-of: kube-state-metrics
     app.kubernetes.io/name: kube-state-metrics
-    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/instance: prometheus
     app.kubernetes.io/version: "2.5.0"
 spec:
   selector:
     matchLabels:      
       app.kubernetes.io/name: kube-state-metrics
-      app.kubernetes.io/instance: release-name
+      app.kubernetes.io/instance: prometheus
   replicas: 1
   template:
     metadata:
@@ -988,11 +988,11 @@ spec:
         app.kubernetes.io/component: metrics
         app.kubernetes.io/part-of: kube-state-metrics
         app.kubernetes.io/name: kube-state-metrics
-        app.kubernetes.io/instance: release-name
+        app.kubernetes.io/instance: prometheus
         app.kubernetes.io/version: "2.5.0"
     spec:
       hostNetwork: false
-      serviceAccountName: release-name-kube-state-metrics
+      serviceAccountName: prometheus-kube-state-metrics
       securityContext:
         fsGroup: 65534
         runAsGroup: 65534
@@ -1028,27 +1028,27 @@ metadata:
   labels:
     component: "alertmanager"
     app: prometheus
-    release: release-name
+    release: prometheus
     chart: prometheus-15.13.0
     heritage: Helm
-  name: release-name-prometheus-alertmanager
+  name: prometheus-alertmanager
 spec:
   selector:
     matchLabels:
       component: "alertmanager"
       app: prometheus
-      release: release-name
+      release: prometheus
   replicas: 1
   template:
     metadata:
       labels:
         component: "alertmanager"
         app: prometheus
-        release: release-name
+        release: prometheus
         chart: prometheus-15.13.0
         heritage: Helm
     spec:
-      serviceAccountName: release-name-prometheus-alertmanager
+      serviceAccountName: prometheus-alertmanager
       containers:
         - name: prometheus-alertmanager
           image: "quay.io/prometheus/alertmanager:v0.24.0"
@@ -1105,10 +1105,10 @@ spec:
       volumes:
         - name: config-volume
           configMap:
-            name: release-name-prometheus-alertmanager
+            name: prometheus-alertmanager
         - name: storage-volume
           persistentVolumeClaim:
-            claimName: release-name-prometheus-alertmanager
+            claimName: prometheus-alertmanager
 ---
 # Source: prometheus/templates/pushgateway/deploy.yaml
 apiVersion: apps/v1
@@ -1117,27 +1117,27 @@ metadata:
   labels:
     component: "pushgateway"
     app: prometheus
-    release: release-name
+    release: prometheus
     chart: prometheus-15.13.0
     heritage: Helm
-  name: release-name-prometheus-pushgateway
+  name: prometheus-pushgateway
 spec:
   selector:
     matchLabels:
       component: "pushgateway"
       app: prometheus
-      release: release-name
+      release: prometheus
   replicas: 1
   template:
     metadata:
       labels:
         component: "pushgateway"
         app: prometheus
-        release: release-name
+        release: prometheus
         chart: prometheus-15.13.0
         heritage: Helm
     spec:
-      serviceAccountName: release-name-prometheus-pushgateway
+      serviceAccountName: prometheus-pushgateway
       containers:
         - name: prometheus-pushgateway
           image: "prom/pushgateway:v1.4.3"
@@ -1172,28 +1172,28 @@ metadata:
   labels:
     component: "server"
     app: prometheus
-    release: release-name
+    release: prometheus
     chart: prometheus-15.13.0
     heritage: Helm
-  name: release-name-prometheus-server
+  name: prometheus-server
 spec:
   selector:
     matchLabels:
       component: "server"
       app: prometheus
-      release: release-name
+      release: prometheus
   replicas: 1
   template:
     metadata:
       labels:
         component: "server"
         app: prometheus
-        release: release-name
+        release: prometheus
         chart: prometheus-15.13.0
         heritage: Helm
     spec:
       enableServiceLinks: true
-      serviceAccountName: release-name-prometheus-server
+      serviceAccountName: prometheus-server
       containers:
         - name: prometheus-server-configmap-reload
           image: "jimmidyson/configmap-reload:v0.5.0"
@@ -1260,7 +1260,7 @@ spec:
       volumes:
         - name: config-volume
           configMap:
-            name: release-name-prometheus-server
+            name: prometheus-server
         - name: storage-volume
           persistentVolumeClaim:
-            claimName: release-name-prometheus-server
+            claimName: prometheus-server
