@@ -1,6 +1,6 @@
 # Platform Services GitOps
 
-[Kalypso](https://github.com/microsoft/kalypso) Platform Services source repository contains final manifests of sample dial-tone platform services to be deployed across clusters fleet. The manifests are stored in the repository branches that represent rollout environments. 
+[Kalypso](https://github.com/microsoft/kalypso) Platform Services source repository contains final manifests of sample dial-tone platform services to be deployed across clusters fleet. The manifests are stored in the repository branches that represent rollout environments. Changes to this repository should happen only through the CD workflow.
 
 ## Contributing
 
